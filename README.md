@@ -1,6 +1,6 @@
 # Ex.No: 05  IMPLEMENTATION OF TIME SERIES ANALYSIS AND DECOMPOSITION
 ### Date: 2.10.2025
-# Name: Praveen J
+### Name: Praveen J
 
 
 ### AIM:
