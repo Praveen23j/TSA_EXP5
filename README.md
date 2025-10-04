@@ -15,51 +15,40 @@ To Illustrates how to perform time series analysis and decomposition on the mont
 
 ### PROGRAM:
 ```
-# Import libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.seasonal import seasonal_decompose
 
-# Load the dataset
 # Example: Monthly Sales Data CSV with columns 'Month' and 'Sales'
 data = pd.read_csv("C:/Users/admin/Downloads/archive/Sales Data.csv")
 
-# Display first five rows
 print("FIRST FIVE ROWS:")
 print(data.head())
 
-# Convert 'Month' to datetime and set as index
 data['Month'] = pd.to_datetime(data['Month'])
 data.set_index('Month', inplace=True)
 
-# Select the sales column
 sales = data['Sales'].dropna()
 
-# Perform seasonal decomposition (monthly data, period=12)
 decomposition = seasonal_decompose(sales, model='additive', period=12)
 
-# Plot decomposition
 plt.figure(figsize=(10,12))
 
-# Original Data
 plt.subplot(411)
 plt.plot(sales, label='Original Sales')
 plt.legend(loc='upper left')
 plt.title('Original Sales Data')
 
-# Trend
 plt.subplot(412)
 plt.plot(decomposition.trend, label='Trend', color='orange')
 plt.legend(loc='upper left')
 plt.title('Trend Plot')
 
-# Seasonal
 plt.subplot(413)
 plt.plot(decomposition.seasonal, label='Seasonal', color='green')
 plt.legend(loc='upper left')
 plt.title('Seasonality Plot')
 
-# Residual
 plt.subplot(414)
 plt.plot(decomposition.resid, label='Residual', color='red')
 plt.legend(loc='upper left')
@@ -68,7 +57,6 @@ plt.title('Residual Plot')
 plt.tight_layout()
 plt.show()
 
-# Overall representation combining original, trend, and seasonal
 plt.figure(figsize=(10,5))
 plt.plot(sales, label='Original Sales')
 plt.plot(decomposition.trend, label='Trend', color='orange')
